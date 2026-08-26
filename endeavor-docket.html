@@ -1,0 +1,595 @@
+<title>Endeavor Docket</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#EEF1E8;
+    --paper-raised:#F8F9F3;
+    --ink:#1C2420;
+    --ink-soft:#4B564C;
+    --line:#CBD2C1;
+    --oxblood:#8C3527;
+    --oxblood-soft:#8C352714;
+    --brass:#8A6A2F;
+    --moss:#4C6B3F;
+    --moss-bg:#4C6B3F1A;
+    --amber:#A8791E;
+    --amber-bg:#A8791E1A;
+    --gray-bg:#4B564C14;
+    --focus:#3D6B8C;
+
+    --serif: "Fraunces", ui-serif, Georgia, serif;
+    --sans: "Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141813;
+      --paper-raised:#1D231C;
+      --ink:#E7E9E0;
+      --ink-soft:#A3AC9B;
+      --line:#333B30;
+      --oxblood:#D97862;
+      --oxblood-soft:#D978621A;
+      --brass:#C9A75C;
+      --moss:#8FBB79;
+      --moss-bg:#8FBB7924;
+      --amber:#D6A63B;
+      --amber-bg:#D6A63B24;
+      --gray-bg:#A3AC9B1A;
+      --focus:#7CB2D9;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141813;
+    --paper-raised:#1D231C;
+    --ink:#E7E9E0;
+    --ink-soft:#A3AC9B;
+    --line:#333B30;
+    --oxblood:#D97862;
+    --oxblood-soft:#D978621A;
+    --brass:#C9A75C;
+    --moss:#8FBB79;
+    --moss-bg:#8FBB7924;
+    --amber:#D6A63B;
+    --amber-bg:#D6A63B24;
+    --gray-bg:#A3AC9B1A;
+    --focus:#7CB2D9;
+  }
+
+  *{box-sizing:border-box;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    margin:0;
+  }
+
+  .docket{max-width:920px; margin:0 auto; padding:0 24px 96px;}
+
+  h1,h2,h3{font-family:var(--serif); font-weight:600; text-wrap:balance; margin:0;}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--brass);
+  }
+
+  a{color:var(--focus);}
+  a:focus-visible, button:focus-visible, input:focus-visible{
+    outline:2px solid var(--focus); outline-offset:2px;
+  }
+
+  /* Masthead */
+  .masthead{
+    position:sticky; top:0; z-index:10;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    padding:20px 24px 16px;
+  }
+  .masthead-inner{max-width:872px; margin:0 auto;}
+  .masthead-top{display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .masthead h1{font-size:26px; letter-spacing:-0.01em;}
+  .masthead .sub{color:var(--ink-soft); font-size:14px; margin-top:4px;}
+  .stamp{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.07em; text-transform:uppercase;
+    border:1px solid var(--oxblood); color:var(--oxblood);
+    padding:4px 10px; border-radius:2px; white-space:nowrap;
+  }
+  nav.jump{
+    display:flex; flex-wrap:wrap; gap:4px 18px;
+    margin-top:14px;
+    font-family:var(--mono); font-size:12px;
+  }
+  nav.jump a{color:var(--ink-soft); text-decoration:none; letter-spacing:0.02em;}
+  nav.jump a:hover{color:var(--oxblood);}
+
+  /* Sections */
+  section{padding-top:56px;}
+  .sec-head{margin-bottom:22px;}
+  .sec-head h2{font-size:23px; margin-top:6px;}
+  .lede{color:var(--ink-soft); font-size:15px; max-width:62ch; margin-top:8px;}
+
+  p{max-width:66ch;}
+
+  /* Snapshot grid */
+  .snapshot-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
+    gap:1px; background:var(--line);
+    border:1px solid var(--line);
+  }
+  .snap-cell{background:var(--paper-raised); padding:14px 16px;}
+  .snap-cell .k{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft);}
+  .snap-cell .v{margin-top:5px; font-size:14.5px;}
+  .snap-cell .v.flag{color:var(--oxblood); font-weight:600;}
+
+  /* Prong cards */
+  .prongs{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media (max-width:720px){.prongs{grid-template-columns:1fr;}}
+  .prong{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:3px;
+    padding:16px 18px;
+  }
+  .prong .num{font-family:var(--mono); font-size:11px; color:var(--ink-soft); letter-spacing:0.06em;}
+  .prong h3{font-size:16.5px; margin-top:6px;}
+  .prong p{font-size:13.5px; color:var(--ink-soft); margin-top:8px; max-width:none;}
+  .pill{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:var(--mono); font-size:11px; letter-spacing:0.05em; text-transform:uppercase;
+    padding:3px 9px; border-radius:2px; margin-top:12px;
+  }
+  .pill.weak{background:var(--oxblood-soft); color:var(--oxblood);}
+  .pill.borderline{background:var(--amber-bg); color:var(--amber);}
+  .pill.building{background:var(--amber-bg); color:var(--amber);}
+  .pill.pending{background:var(--gray-bg); color:var(--ink-soft);}
+  .pill.done{background:var(--moss-bg); color:var(--moss);}
+  .pill.progress{background:var(--amber-bg); color:var(--amber);}
+  .pill.notstarted{background:var(--gray-bg); color:var(--ink-soft);}
+
+  /* Endeavor */
+  .endeavor-box{
+    background:var(--paper-raised); border-left:3px solid var(--brass);
+    padding:16px 20px; margin-top:16px;
+  }
+  .endeavor-box h4{font-family:var(--sans); font-weight:600; font-size:13.5px; margin:0 0 6px;}
+  .cut-list{
+    margin-top:16px; font-size:13.5px; color:var(--ink-soft);
+  }
+  .cut-list .k{color:var(--ink); font-weight:600;}
+
+  /* Critical path */
+  .critical{
+    background:var(--oxblood-soft); border:1px solid var(--oxblood);
+    border-radius:3px; padding:22px 24px;
+  }
+  .critical .eyebrow{color:var(--oxblood);}
+  .critical h3{font-size:18px; margin-top:8px;}
+  .critical p{font-size:14.5px; margin-top:8px;}
+  .critical .why{margin-top:14px; font-size:13.5px; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:12px;}
+
+  /* Action items */
+  .group{margin-top:30px;}
+  .group:first-child{margin-top:0;}
+  .group-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--ink-soft); border-bottom:1px solid var(--line); padding-bottom:6px; margin-bottom:10px;
+  }
+  .item{
+    display:flex; gap:12px; padding:10px 4px; border-bottom:1px solid var(--line);
+  }
+  .item:last-child{border-bottom:none;}
+  .item input[type="checkbox"]{
+    appearance:none; width:17px; height:17px; margin-top:2px; flex:none;
+    border:1.5px solid var(--ink-soft); border-radius:2px; cursor:pointer; position:relative;
+    background:var(--paper-raised);
+  }
+  .item input[type="checkbox"]:checked{background:var(--moss); border-color:var(--moss);}
+  .item input[type="checkbox"]:checked::after{
+    content:""; position:absolute; left:4px; top:0px; width:5px; height:9px;
+    border:solid var(--paper-raised); border-width:0 2px 2px 0; transform:rotate(40deg);
+  }
+  .item-body{flex:1;}
+  .item-title{font-size:14.5px; font-weight:500;}
+  .item.done .item-title{color:var(--ink-soft); text-decoration:line-through; text-decoration-color:var(--line);}
+  .item-detail{font-size:13px; color:var(--ink-soft); margin-top:2px;}
+  .item-meta{display:flex; gap:10px; margin-top:6px; flex-wrap:wrap;}
+  .tag{
+    font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em;
+    color:var(--ink-soft);
+  }
+  .tag.deadline{color:var(--oxblood);}
+
+  /* Timeline */
+  .timeline{border-left:1px solid var(--line); margin-left:6px; padding-left:24px;}
+  .tl-item{position:relative; padding-bottom:26px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:""; position:absolute; left:-29px; top:4px; width:9px; height:9px;
+    border-radius:50%; background:var(--paper); border:2px solid var(--brass);
+  }
+  .tl-item.now::before{background:var(--oxblood); border-color:var(--oxblood);}
+  .tl-date{font-family:var(--mono); font-size:12px; color:var(--brass); letter-spacing:0.03em;}
+  .tl-item.now .tl-date{color:var(--oxblood);}
+  .tl-title{font-size:15px; font-weight:600; margin-top:3px;}
+  .tl-detail{font-size:13.5px; color:var(--ink-soft); margin-top:3px; max-width:56ch;}
+
+  /* Tracker table */
+  .tracker-scroll{overflow-x:auto; border:1px solid var(--line);}
+  table{border-collapse:collapse; width:100%; min-width:640px; font-size:13.5px;}
+  thead th{
+    font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em;
+    color:var(--ink-soft); text-align:left; padding:10px 14px; border-bottom:1px solid var(--line);
+    background:var(--paper-raised); position:sticky; top:0;
+  }
+  tbody td{padding:11px 14px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tbody tr:last-child td{border-bottom:none;}
+  .ex{font-family:var(--mono); color:var(--brass); font-size:12.5px;}
+  .prong-tag{font-family:var(--mono); font-size:11px; color:var(--ink-soft); font-variant-numeric:tabular-nums;}
+  .status-btn{
+    font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em;
+    padding:3px 9px; border-radius:2px; border:1px solid transparent; cursor:pointer;
+    background:var(--gray-bg); color:var(--ink-soft);
+  }
+  .status-btn[data-state="progress"]{background:var(--amber-bg); color:var(--amber);}
+  .status-btn[data-state="done"]{background:var(--moss-bg); color:var(--moss);}
+
+  footer{
+    margin-top:64px; padding-top:20px; border-top:1px solid var(--line);
+    font-size:12.5px; color:var(--ink-soft);
+  }
+</style>
+
+<div class="docket">
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-top">
+        <div>
+          <h1>Endeavor Docket</h1>
+          <div class="sub">Clark Jason Ngo &middot; EB&#8209;2 National Interest Waiver &middot; personal reference, not legal advice</div>
+        </div>
+        <div class="stamp">Status: Building</div>
+      </div>
+      <nav class="jump">
+        <a href="#snapshot">Snapshot</a>
+        <a href="#framework">Framework</a>
+        <a href="#endeavor">Endeavor</a>
+        <a href="#critical-path">Critical path</a>
+        <a href="#action-items">Action items</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#tracker">Tracker</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="snapshot">
+      <div class="sec-head">
+        <div class="eyebrow">&sect;1 &mdash; Case snapshot</div>
+        <h2>Where things stand</h2>
+      </div>
+      <div class="snapshot-grid">
+        <div class="snap-cell"><div class="k">Category</div><div class="v">EB&#8209;2 NIW &middot; self&#8209;petition (I&#8209;140)</div></div>
+        <div class="snap-cell"><div class="k">Current status</div><div class="v">F&#8209;1, MS Data Science, City University of Seattle</div></div>
+        <div class="snap-cell"><div class="k">Family petition</div><div class="v">I&#8209;130 filed Jul 2026 &middot; likely blocked by unauthorized&#8209;work bar</div></div>
+        <div class="snap-cell"><div class="k">Visa bulletin</div><div class="v">EB&#8209;2 current for Philippines (Sep 2026) &mdash; watch for retrogression</div></div>
+        <div class="snap-cell"><div class="k">H&#8209;1B history</div><div class="v">Revoked Jul&ndash;Oct 2023, employer wage&#8209;filing error, no personal misconduct found</div></div>
+        <div class="snap-cell"><div class="k">Gating question</div><div class="v flag">INA 245(k) not yet confirmed by an attorney</div></div>
+      </div>
+    </section>
+
+    <section id="framework">
+      <div class="sec-head">
+        <div class="eyebrow">&sect;2 &mdash; The Dhanasar framework</div>
+        <h2>Three prongs, one file</h2>
+        <p class="lede">Every piece of evidence in this docket exists to serve one of these three tests. If it doesn't, it doesn't belong in the petition.</p>
+      </div>
+      <div class="prongs">
+        <div class="prong">
+          <div class="num">Prong I</div>
+          <h3>Substantial merit &amp; national importance</h3>
+          <p>The endeavor itself has to matter &mdash; not just to you, to the field or the country. Needs one bounded, forward&#8209;looking statement, not a resume recap.</p>
+          <span class="pill borderline">Borderline</span>
+        </div>
+        <div class="prong">
+          <div class="num">Prong II</div>
+          <h3>Well positioned to advance it</h3>
+          <p>Track record, letters, progress already made. Currently the weakest prong &mdash; nearly every letter on file traces back to one institution.</p>
+          <span class="pill weak">Weakest</span>
+        </div>
+        <div class="prong">
+          <div class="num">Prong III</div>
+          <h3>Waiving the job offer helps the US</h3>
+          <p>Usually the easiest to argue once I and II are solid. Not yet reached &mdash; no point building this until the endeavor is fixed.</p>
+          <span class="pill pending">Not yet reached</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="endeavor">
+      <div class="sec-head">
+        <div class="eyebrow">&sect;3 &mdash; The endeavor</div>
+        <h2>What this case is actually about</h2>
+        <p class="lede">Four independent reads converged on the same answer: pick one thread and lead with it. Everything else is supporting color.</p>
+      </div>
+      <div class="endeavor-box">
+        <h4>Lead with &mdash; AI/STEM workforce &amp; education infrastructure</h4>
+        <p style="margin-top:0; font-size:14.5px;">Anchored in the BS in Artificial Intelligence program proposal (through CityU's Academic Affairs Committee) and the Amazon AWS Military Apprenticeship track record &mdash; 25 veterans trained, 93% placed into AWS on&#8209;the&#8209;job training, $72K saved over two years. Quantified, verifiable, and independently corroborated by AWS.</p>
+      </div>
+      <div class="cut-list">
+        <p><span class="k">Keep as supporting color, not pillars:</span> the OWASP/Google&nbsp;ADK agentic&#8209;AI threat&#8209;model paper, <a href="https://clarkngo.github.io/scripted-ot/">ScriptedOT</a> (well&#8209;received live at an NSF&#8209;funded NCyTE OT&#8209;security faculty workshop), the early Seattle&nbsp;PD AI&#8209;governance conversation.</p>
+        <p><span class="k">Leave out of the petition entirely:</span> DJ work, insurance sales, kitchen jobs, volleyball/basketball coaching &mdash; none of it moves prong II, and it dilutes an otherwise focused file.</p>
+      </div>
+    </section>
+
+    <section id="critical-path">
+      <div class="critical">
+        <div class="eyebrow">&sect;4 &mdash; Critical path</div>
+        <h3>Confirm INA&nbsp;245(k) before spending real money</h3>
+        <p>Your wife's I&#8209;130 likely can't carry you to a green card &mdash; INA&nbsp;245(c) has no exception for spouses of LPRs (only immediate relatives of US citizens). Your entire adjustment&#8209;of&#8209;status strategy rests on whether 245(k)'s 180&#8209;day exception, counted from your December&nbsp;2023 F&#8209;1 re&#8209;entry, covers the unauthorized&#8209;work period tied to the H&#8209;1B revocation. Nobody with a law license has confirmed this in writing yet.</p>
+        <div class="why">This is a threshold legal question, not a case&#8209;strength question. Get a licensed attorney's written answer before signing any retainer &mdash; it decides whether NIW+AOS even works, or whether consular processing is the real path.</div>
+      </div>
+    </section>
+
+    <section id="action-items">
+      <div class="sec-head">
+        <div class="eyebrow">&sect;5 &mdash; Action items</div>
+        <h2>The actual to&#8209;do list</h2>
+        <p class="lede">Checkboxes save locally in this browser &mdash; come back anytime and your progress is still here.</p>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><span>Legal</span><span>Blocking</span></div>
+        <div class="item" data-key="legal-245k">
+          <input type="checkbox">
+          <div class="item-body">
+            <div class="item-title">Get INA 245(k) confirmed in writing</div>
+            <div class="item-detail">By a licensed attorney &mdash; not the client liaison. Determines AOS vs. consular processing.</div>
+            <div class="item-meta"><span class="tag deadline">Blocking</span></div>
+          </div>
+        </div>
+        <div class="item" data-key="legal-second-opinion">
+          <input type="checkbox">
+          <div class="item-body">
+            <div class="item-title">Get a second law&#8209;firm consultation</div>
+            <div class="item-detail">Colombo &amp; Hurd's quote ($16.2k&ndash;$18k) sits above typical market range ($4k&ndash;$15k). The "sign by end of month" discount is a sales tactic, not a real deadline &mdash; don't let it rush a $16k+ decision.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><span>Independent letters</span><span>Prong II</span></div>
+        <div class="item" data-key="letter-terra">
+          <input type="checkbox">
+          <div class="item-body">
+            <div class="item-title">Reach out to Terra Bandin (AWS)</div>
+            <div class="item-detail">Reconnect via LinkedIn, request a letter on the veteran apprenticeship outcomes.</div>
+          </div>
+        </div>
+        <div class="item" data-key="letter-pavel">
+          <input type="checkbox">
+          <div class="item-body">
+            <div class="item-title">Reach out to Pavel Liu (eBay)</div>
+            <div class="item-detail">Text to reconnect, then request a letter on the production&#8209;engineering track record.</div>
+          </div>
+        </div>
+        <div class="item" data-key="letter-sands">
+          <input type="checkbox">
+          <div class="item-body">
+            <div class="item-title">Follow up with John Sands (NCyTE)</div>
+            <div class="item-detail">Two touchpoints to reference: the 2025 AI&#8209;for&#8209;Educators workshop where you assisted, and the Aug 2026 OT Security Faculty Academy (NSF&#8209;funded) where you demoed ScriptedOT at the end and he called it good for engagement.</div>
+          </div>
+        </div>
+        <div class="item" data-key="letter-jirik">
+          <input type="checkbox">
+          <div class="item-body">
+            <div class="item-title">Follow up with Jiri Jirik (NCyTE)</div>
+            <div class="item-detail">He's the one who verbally raised collaborating, after seeing the 2026 tools showcase &mdash; chase that thread first, letter second. Separate from Sands' letter so the two corroborate independently.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><span>Public validation</span><span>Prong I &amp; II</span></div>
+        <div class="item" data-key="conf-satml">
+          <input type="checkbox">
+          <div class="item-body">
+            <div class="item-title">Submit a position paper to IEEE SaTML 2027</div>
+            <div class="item-detail">Adapt the OWASP/ADK threat&#8209;model work. Peer&#8209;reviewed, on&#8209;topic.</div>
+            <div class="item-meta"><span class="tag deadline">Due Sep 29, 2026</span></div>
+          </div>
+        </div>
+        <div class="item" data-key="conf-owasp-sea">
+          <input type="checkbox">
+          <div class="item-body">
+            <div class="item-title">Email OWASP Seattle for a meetup talk</div>
+            <div class="item-detail">Rolling, no formal CFP &mdash; fastest way to bank one external, non&#8209;CityU speaking credit.</div>
+          </div>
+        </div>
+        <div class="item" data-key="conf-rsa">
+          <input type="checkbox">
+          <div class="item-body">
+            <div class="item-title">Draft an RSA Conference 2027 abstract</div>
+            <div class="item-detail">Have it ready before the CFP opens &mdash; competitive, early submissions do better.</div>
+            <div class="item-meta"><span class="tag deadline">CFP opens Sep 15, 2026</span></div>
+          </div>
+        </div>
+        <div class="item" data-key="conf-bsides">
+          <input type="checkbox">
+          <div class="item-body">
+            <div class="item-title">Watch for BSides Seattle 2027 CFP</div>
+            <div class="item-detail">Not yet posted &mdash; check bsidesseattle.com starting in October.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><span>Documentation</span><span>Prong I &amp; II</span></div>
+        <div class="item" data-key="doc-scholar">
+          <input type="checkbox">
+          <div class="item-body">
+            <div class="item-title">Set up a Google Scholar profile</div>
+            <div class="item-detail">Get the honest citation count visible and attributable.</div>
+          </div>
+        </div>
+        <div class="item" data-key="doc-endeavor-statement">
+          <input type="checkbox">
+          <div class="item-body">
+            <div class="item-title">Draft the forward&#8209;looking endeavor statement</div>
+            <div class="item-detail">Doesn't exist yet. One bounded paragraph: what you'll keep building, not what you've already done.</div>
+          </div>
+        </div>
+        <div class="item" data-key="doc-spd">
+          <input type="checkbox">
+          <div class="item-body">
+            <div class="item-title">Get the Seattle PD conversation in writing</div>
+            <div class="item-detail">Even a short email confirming interest outweighs a verbal mention.</div>
+          </div>
+        </div>
+        <div class="item" data-key="doc-foia">
+          <input type="checkbox">
+          <div class="item-body">
+            <div class="item-title">Organize the H&#8209;1B revocation FOIA records</div>
+            <div class="item-detail">Shows the revocation traced to an employer filing error, not personal misconduct.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <div class="sec-head">
+        <div class="eyebrow">&sect;6 &mdash; Timeline</div>
+        <h2>Working horizon</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item now">
+          <div class="tl-date">NOW</div>
+          <div class="tl-title">Resolve the legal gate, start outreach</div>
+          <div class="tl-detail">245(k) confirmation, second law&#8209;firm opinion, and the first messages to Terra, Pavel, Sands, and Jirik all start this week &mdash; none of them depend on each other.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">SEP 15, 2026</div>
+          <div class="tl-title">RSA Conference 2027 CFP opens</div>
+          <div class="tl-detail">Submit the drafted abstract the day it opens.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">SEP 29, 2026</div>
+          <div class="tl-title">IEEE SaTML 2027 submission deadline</div>
+          <div class="tl-detail">Position paper due.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">OCT 2026</div>
+          <div class="tl-title">BSides Seattle 2027 CFP watch begins</div>
+          <div class="tl-detail">Check weekly once the window opens.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">NOV 2026 &ndash; MAR 2027</div>
+          <div class="tl-title">Evidence&#8209;building window</div>
+          <div class="tl-detail">Collect letters, finalize the endeavor statement, resolve the law&#8209;firm decision, track the visa bulletin for retrogression risk.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">FILING DECISION</div>
+          <div class="tl-title">File once 245(k) is confirmed and Prong II is no longer the weak point</div>
+          <div class="tl-detail">Weigh against the MS Data Science graduation timeline (~1 year out) &mdash; you need legal status secured before that clock runs out.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tracker">
+      <div class="sec-head">
+        <div class="eyebrow">&sect;7 &mdash; Evidence tracker</div>
+        <h2>Exhibit by exhibit</h2>
+        <p class="lede">Click a status to cycle it &mdash; saved locally, same as the checklist above.</p>
+      </div>
+      <div class="tracker-scroll">
+        <table>
+          <thead>
+            <tr><th>Exhibit</th><th>Item</th><th>Prong</th><th>Status</th></tr>
+          </thead>
+          <tbody id="tracker-body">
+            <tr><td class="ex">Ex. A</td><td>Legal memo &mdash; INA 245(k) confirmation</td><td class="prong-tag">Gate</td><td><button class="status-btn" data-key="ex-245k" data-state="notstarted">Not started</button></td></tr>
+            <tr><td class="ex">Ex. B</td><td>Terra Bandin (AWS) letter</td><td class="prong-tag">II</td><td><button class="status-btn" data-key="ex-terra" data-state="notstarted">Not started</button></td></tr>
+            <tr><td class="ex">Ex. C</td><td>Pavel Liu (eBay) letter</td><td class="prong-tag">II</td><td><button class="status-btn" data-key="ex-pavel" data-state="notstarted">Not started</button></td></tr>
+            <tr><td class="ex">Ex. D</td><td>John Sands (NCyTE) letter</td><td class="prong-tag">I &amp; II</td><td><button class="status-btn" data-key="ex-sands" data-state="notstarted">Not started</button></td></tr>
+            <tr><td class="ex">Ex. E</td><td>Jiri Jirik (NCyTE) letter</td><td class="prong-tag">I &amp; II</td><td><button class="status-btn" data-key="ex-jirik" data-state="notstarted">Not started</button></td></tr>
+            <tr><td class="ex">Ex. F</td><td>Forward&#8209;looking endeavor statement</td><td class="prong-tag">I</td><td><button class="status-btn" data-key="ex-statement" data-state="notstarted">Not started</button></td></tr>
+            <tr><td class="ex">Ex. G</td><td>Google Scholar profile</td><td class="prong-tag">II</td><td><button class="status-btn" data-key="ex-scholar" data-state="notstarted">Not started</button></td></tr>
+            <tr><td class="ex">Ex. H</td><td>SaTML 2027 position paper</td><td class="prong-tag">I &amp; II</td><td><button class="status-btn" data-key="ex-satml" data-state="notstarted">Not started</button></td></tr>
+            <tr><td class="ex">Ex. I</td><td>Seattle PD engagement, in writing</td><td class="prong-tag">I</td><td><button class="status-btn" data-key="ex-spd" data-state="notstarted">Not started</button></td></tr>
+            <tr><td class="ex">Ex. J</td><td>H&#8209;1B revocation FOIA record</td><td class="prong-tag">Context</td><td><button class="status-btn" data-key="ex-foia" data-state="notstarted">Not started</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      Personal working reference, not legal advice or a filed document. Cross&#8209;check the 245(k) and visa&#8209;bulletin facts with a licensed attorney before relying on them.
+    </footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  var STORE_KEY = "endeavor-docket-v1";
+  var state = {};
+  try{
+    state = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
+  }catch(e){ state = {}; }
+
+  function save(){
+    try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){}
+  }
+
+  // Checklist items
+  document.querySelectorAll(".item[data-key]").forEach(function(item){
+    var key = item.getAttribute("data-key");
+    var box = item.querySelector("input[type=checkbox]");
+    if(!box) return;
+    var checked = !!state[key];
+    box.checked = checked;
+    item.classList.toggle("done", checked);
+    box.addEventListener("change", function(){
+      state[key] = box.checked;
+      item.classList.toggle("done", box.checked);
+      save();
+    });
+  });
+
+  // Tracker status cycle: notstarted -> progress -> done -> notstarted
+  var cycle = {
+    notstarted: {next:"progress", label:"In progress"},
+    progress: {next:"done", label:"Done"},
+    done: {next:"notstarted", label:"Not started"}
+  };
+  var labels = {notstarted:"Not started", progress:"In progress", done:"Done"};
+
+  document.querySelectorAll(".status-btn[data-key]").forEach(function(btn){
+    var key = btn.getAttribute("data-key");
+    var saved = state[key];
+    if(saved && labels[saved]){
+      btn.setAttribute("data-state", saved);
+      btn.textContent = labels[saved];
+    }
+    btn.addEventListener("click", function(){
+      var current = btn.getAttribute("data-state") || "notstarted";
+      var next = (cycle[current] || cycle.notstarted).next;
+      btn.setAttribute("data-state", next);
+      btn.textContent = labels[next];
+      state[key] = next;
+      save();
+    });
+  });
+})();
+</script>
