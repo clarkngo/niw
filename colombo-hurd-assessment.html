@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colombo &amp; Hurd — Due Diligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF1E8; --paper-raised:#F8F9F3; --ink:#1C2420; --ink-soft:#4B564C;
+    --line:#CBD2C1; --oxblood:#8C3527; --oxblood-soft:#8C352714; --brass:#8A6A2F;
+    --moss:#4C6B3F; --moss-bg:#4C6B3F1A; --amber:#A8791E; --amber-bg:#A8791E1A; --gray-bg:#4B564C14;
+    --serif:"Fraunces", ui-serif, Georgia, serif;
+    --sans:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141813; --paper-raised:#1D231C; --ink:#E7E9E0; --ink-soft:#A3AC9B; --line:#333B30;
+      --oxblood:#D97862; --oxblood-soft:#D978621A; --brass:#C9A75C;
+      --moss:#8FBB79; --moss-bg:#8FBB7924; --amber:#D6A63B; --amber-bg:#D6A63B24; --gray-bg:#A3AC9B1A;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141813; --paper-raised:#1D231C; --ink:#E7E9E0; --ink-soft:#A3AC9B; --line:#333B30;
+    --oxblood:#D97862; --oxblood-soft:#D978621A; --brass:#C9A75C;
+    --moss:#8FBB79; --moss-bg:#8FBB7924; --amber:#D6A63B; --amber-bg:#D6A63B24; --gray-bg:#A3AC9B1A;
+  }
+  *{box-sizing:border-box;}
+  @media (prefers-reduced-motion: reduce){ *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;} }
+  body{background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.65; margin:0; -webkit-font-smoothing:antialiased;}
+  .page{max-width:800px; margin:0 auto; padding:0 24px 96px;}
+  h1,h2,h3{font-family:var(--serif); font-weight:600; text-wrap:balance; margin:0;}
+  p{max-width:68ch;}
+  a{color:var(--brass);}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:0.09em; text-transform:uppercase; color:var(--brass);}
+
+  header.masthead{border-bottom:1px solid var(--line); padding:40px 0 20px;}
+  header.masthead .back{font-family:var(--mono); font-size:12px; color:var(--ink-soft); text-decoration:none;}
+  header.masthead h1{font-size:27px; margin-top:10px;}
+  .verdict-stamp{
+    display:inline-flex; align-items:center; gap:8px; margin-top:14px;
+    font-family:var(--mono); font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase;
+    border:1px solid var(--brass); color:var(--brass); padding:5px 12px; border-radius:2px;
+  }
+
+  section{padding-top:44px;}
+  section h2{font-size:20px; margin-bottom:16px;}
+  .lede{color:var(--ink-soft); font-size:14.5px; margin-top:-6px; margin-bottom:18px; max-width:62ch;}
+
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .cell{background:var(--paper-raised); padding:14px 16px;}
+  .cell .k{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft);}
+  .cell .v{margin-top:5px; font-size:14.5px;}
+
+  .finding{
+    border:1px solid var(--line); border-left-width:3px; border-radius:3px;
+    padding:14px 18px; margin-bottom:12px; background:var(--paper-raised);
+  }
+  .finding.positive{border-left-color:var(--moss);}
+  .finding.caution{border-left-color:var(--amber);}
+  .finding.concern{border-left-color:var(--oxblood);}
+  .finding .tag{
+    font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em;
+    padding:2px 8px; border-radius:2px; display:inline-block; margin-bottom:8px;
+  }
+  .finding.positive .tag{background:var(--moss-bg); color:var(--moss);}
+  .finding.caution .tag{background:var(--amber-bg); color:var(--amber);}
+  .finding.concern .tag{background:var(--oxblood-soft); color:var(--oxblood);}
+  .finding h3{font-size:15px; font-family:var(--sans); font-weight:600;}
+  .finding p{font-size:14px; margin-top:6px; margin-bottom:0; color:var(--ink-soft);}
+  .finding blockquote{
+    font-family:var(--serif); font-style:italic; font-size:14px; color:var(--ink);
+    margin:10px 0 0; padding-left:12px; border-left:2px solid var(--line);
+  }
+
+  .fee-table{width:100%; border-collapse:collapse; font-size:14px; margin-top:8px;}
+  .fee-table td{padding:8px 10px; border-bottom:1px solid var(--line);}
+  .fee-table td:last-child{text-align:right; font-variant-numeric:tabular-nums; font-family:var(--mono);}
+  .fee-table tr.total td{font-weight:700; border-top:1.5px solid var(--ink-soft); border-bottom:none;}
+
+  .item{display:flex; gap:12px; padding:10px 4px; border-bottom:1px solid var(--line);}
+  .item:last-child{border-bottom:none;}
+  .item input[type="checkbox"]{
+    appearance:none; width:17px; height:17px; margin-top:2px; flex:none;
+    border:1.5px solid var(--ink-soft); border-radius:2px; cursor:pointer; position:relative; background:var(--paper-raised);
+  }
+  .item input[type="checkbox"]:checked{background:var(--moss); border-color:var(--moss);}
+  .item input[type="checkbox"]:checked::after{
+    content:""; position:absolute; left:4px; top:0px; width:5px; height:9px;
+    border:solid var(--paper-raised); border-width:0 2px 2px 0; transform:rotate(40deg);
+  }
+  .item-body{flex:1;}
+  .item-title{font-size:14.5px; font-weight:500;}
+  .item.done .item-title{color:var(--ink-soft); text-decoration:line-through; text-decoration-color:var(--line);}
+  .item-detail{font-size:13px; color:var(--ink-soft); margin-top:2px;}
+
+  .verdict-box{background:var(--paper-raised); border:1px solid var(--line); border-radius:3px; padding:20px 22px;}
+  .verdict-box p{font-size:14.5px;}
+
+  footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font-size:12.5px; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <a class="back" href="index.html">&larr; NIW working pages</a>
+    <div class="eyebrow">Vendor due diligence</div>
+    <h1>Colombo &amp; Hurd, PL</h1>
+    <p style="color:var(--ink-soft); font-size:14.5px; margin-top:8px;">Assessment of the firm proposed to build the EB&#8209;2 NIW petition &mdash; reputation, sales process, and the actual signed&#8209;ready retainer agreement.</p>
+    <div class="verdict-stamp">Legitimate, high&#8209;volume, priced above market</div>
+  </header>
+
+  <section>
+    <h2>Firm snapshot</h2>
+    <div class="grid">
+      <div class="cell"><div class="k">Founded</div><div class="v">2006, Orlando &amp; Tampa, FL</div></div>
+      <div class="cell"><div class="k">Size</div><div class="v">350+ staff, 30+ US immigration attorneys</div></div>
+      <div class="cell"><div class="k">Track record</div><div class="v">2,000&ndash;2,500 EB&#8209;2 NIW / EB&#8209;1A approvals claimed since 2023</div></div>
+      <div class="cell"><div class="k">Ratings</div><div class="v">AV Preeminent (Martindale&#8209;Hubbell), A+ BBB, 4.9/5 Google (101 reviews)</div></div>
+      <div class="cell"><div class="k">Bar standing</div><div class="v">No public discipline found for named partners (Florida Bar, checked via Avvo)</div></div>
+      <div class="cell"><div class="k">Employee reviews</div><div class="v">Glassdoor 3.9/5 (61 reviews) &mdash; see findings below</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What's genuinely strong</h2>
+    <div class="finding positive">
+      <span class="tag">Real credential</span>
+      <h3>Amanda "Mandy" Nease &mdash; 13 years as a USCIS adjudicator</h3>
+      <p>Senior Immigration Attorney and Director of Professional Development. Spent 13 years at the Nebraska Service Center personally reviewing EB&#8209;2 NIW petitions and training officers on adjudication standards. This is a genuine, uncommon asset for case strategy &mdash; not just marketing copy.</p>
+    </div>
+    <div class="finding positive">
+      <span class="tag">Fair term</span>
+      <h3>RFE response included at no extra fee</h3>
+      <p>Contract &sect;9: if USCIS issues a Request for Evidence, the firm responds without charging an additional attorney fee. Not every firm includes this.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>What's worth real caution</h2>
+    <div class="finding concern">
+      <span class="tag">Concern &mdash; &sect;11</span>
+      <h3>The firm claims permanent ownership of your own case materials</h3>
+      <blockquote>"...drafted recommendation letters, endeavor and personal statement, and drafted petition letter is attorney work product and the sole property of Attorney at ALL TIMES even after the termination of the representation."</blockquote>
+      <p>This names content about <em>your own life and endeavor</em>, not just internal firm notes. Practically: if you ever switch counsel, you may not be free to bring your own drafted materials without the firm's written consent. Ask them directly, in writing, what this means if you terminate and hire someone else.</p>
+    </div>
+    <div class="finding concern">
+      <span class="tag">Concern &mdash; &sect;6</span>
+      <h3>15 days late &rarr; 3%/month interest and work stops entirely</h3>
+      <p>Over a 16&#8209;month installment plan, a single delayed payment doesn't just cost a fee &mdash; per firm policy, all work on the case stops until you catch up. Worth stress&#8209;testing against your actual income situation on F&#8209;1 status before committing to the schedule.</p>
+    </div>
+    <div class="finding caution">
+      <span class="tag">Caution</span>
+      <h3>Pricing sits above typical market range</h3>
+      <p>$16,200 attorney fee (discounted tier) vs. a general market range of roughly $4,000&ndash;$15,000, with most successful cases reportedly landing $8,000&ndash;$14,000 total. Not disqualifying for a high&#8209;volume, credentialed shop &mdash; but it's a premium, not an average price.</p>
+    </div>
+    <div class="finding caution">
+      <span class="tag">Caution</span>
+      <h3>Contract reads as templated, not bespoke</h3>
+      <p>&sect;4 ("Spouse as Principal Applicant") is boilerplate that doesn't fit this situation &mdash; the spouse already holds a green card. Its presence suggests a standard-form agreement rather than one drafted around the specific facts.</p>
+    </div>
+    <div class="finding caution">
+      <span class="tag">Employee signal</span>
+      <h3>Attorney pay runs ~33% below market</h3>
+      <p>Glassdoor: average immigration attorney salary $119,802/yr vs. ~$159,810 US average for the role. Combined with the claimed case volume (2,000&ndash;2,500 approvals across roughly 3 years), this points to a high&#8209;throughput model &mdash; each attorney likely carries a heavier caseload than a boutique shop, which is exactly why getting specifics in writing matters more here, not less.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>The sales process, not just the contract</h2>
+    <div class="finding caution">
+      <span class="tag">Pattern</span>
+      <h3>Urgency appears twice, substance appears never</h3>
+      <p>The intake call included a discount that "expires end of month." A later WhatsApp message announced a "green light from the legal team" and pushed to sign "as soon as possible" &mdash; while citing only generic strengths ("awards, publications, presentations, 3 masters degrees") that don't reflect the specific weaknesses already identified in this file (thin citation count, single&#8209;institution letters). Neither message mentioned the one legal question that actually gates the case: INA&nbsp;245(k).</p>
+      <p>Takunda, who ran the intake call and sent that message, is a client liaison &mdash; a sales/intake role, not an attorney. That's normal at a firm this size, but it means "green light from legal" should be treated as a sales summary until a licensed attorney says the same thing directly, in writing.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Fee structure, confirmed from the signed-ready agreement</h2>
+    <table class="fee-table">
+      <tr><td>Initial deposit (non&#8209;refundable, due on signing)</td><td>$2,440</td></tr>
+      <tr><td>Remaining balance &mdash; 16 monthly installments of $860</td><td>$13,760</td></tr>
+      <tr class="total"><td>Total attorney fee</td><td>$16,200</td></tr>
+      <tr><td style="padding-top:16px; color:var(--ink-soft); font-size:13px;">USCIS filing fee (Form I&#8209;140) &mdash; separate, paid direct to USCIS</td><td style="padding-top:16px;">$1,015</td></tr>
+      <tr><td style="color:var(--ink-soft); font-size:13px;">Optional premium processing (Form I&#8209;907) &mdash; separate</td><td>$2,965</td></tr>
+      <tr><td style="color:var(--ink-soft); font-size:13px;">AOS after I&#8209;140 approval &mdash; separate engagement, not included</td><td>$3,200</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Get these answered in writing before signing</h2>
+    <p class="lede">Checkboxes save locally in this browser.</p>
+    <div class="item" data-key="ch-245k">
+      <input type="checkbox">
+      <div class="item-body">
+        <div class="item-title">Written confirmation on INA 245(k) for this specific timeline</div>
+        <div class="item-detail">Does the unauthorized&#8209;employment period fall inside or outside the 180&#8209;day exception, counted from the Dec 2023 F&#8209;1 re&#8209;entry?</div>
+      </div>
+    </div>
+    <div class="item" data-key="ch-attorney">
+      <input type="checkbox">
+      <div class="item-body">
+        <div class="item-title">Which attorney reviewed the file, and what specifically convinced them</div>
+        <div class="item-detail">Not "awards, publications, 3 masters degrees" &mdash; something tied to the actual specifics (AWS letter, NCyTE relationship, ScriptedOT).</div>
+      </div>
+    </div>
+    <div class="item" data-key="ch-workproduct">
+      <input type="checkbox">
+      <div class="item-body">
+        <div class="item-title">What &sect;11 means in practice if representation ends</div>
+        <div class="item-detail">Can drafted materials (endeavor statement, letters) move to new counsel without the firm's written consent?</div>
+      </div>
+    </div>
+    <div class="item" data-key="ch-deposit-scope">
+      <input type="checkbox">
+      <div class="item-body">
+        <div class="item-title">Does the initial $2,440 deposit explicitly include the 245(k) analysis</div>
+        <div class="item-detail">Before any further payment or drafting work begins.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Bottom line</h2>
+    <div class="verdict-box">
+      <p style="margin-top:0;">Not a scam, not a firm to walk away from on reputation alone &mdash; real credentials (especially Mandy Nease), no bar discipline found, legitimate scale. But it is a high&#8209;volume operation priced at the top of the market, with a sales process so far built on urgency and generic reassurance rather than case&#8209;specific analysis, and a contract with at least one term (&sect;11) worth pushing back on before signing. None of this rules it out. It does mean the four questions above should get written answers first &mdash; not "we'll figure it out once you're on board."</p>
+    </div>
+  </section>
+
+  <footer>Assessment based on the intake call, a follow-up WhatsApp message, public reputation research, and the actual signed-ready Professional Services Agreement (dated Aug 26, 2026). Not legal advice.</footer>
+</div>
+
+<script>
+(function(){
+  var STORE_KEY = "colombo-hurd-assessment-v1";
+  var state = {};
+  try{ state = JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); }catch(e){ state = {}; }
+  function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){} }
+  document.querySelectorAll(".item[data-key]").forEach(function(item){
+    var key = item.getAttribute("data-key");
+    var box = item.querySelector("input[type=checkbox]");
+    if(!box) return;
+    var checked = !!state[key];
+    box.checked = checked;
+    item.classList.toggle("done", checked);
+    box.addEventListener("change", function(){
+      state[key] = box.checked;
+      item.classList.toggle("done", box.checked);
+      save();
+    });
+  });
+})();
+</script>
+</body>
+</html>

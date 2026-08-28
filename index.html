@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clark Ngo — NIW</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF1E8; --paper-raised:#F8F9F3; --ink:#1C2420; --ink-soft:#4B564C;
+    --line:#CBD2C1; --oxblood:#8C3527; --brass:#8A6A2F;
+    --serif:"Fraunces", ui-serif, Georgia, serif;
+    --sans:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141813; --paper-raised:#1D231C; --ink:#E7E9E0; --ink-soft:#A3AC9B;
+      --line:#333B30; --oxblood:#D97862; --brass:#C9A75C;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141813; --paper-raised:#1D231C; --ink:#E7E9E0; --ink-soft:#A3AC9B;
+    --line:#333B30; --oxblood:#D97862; --brass:#C9A75C;
+  }
+  *{box-sizing:border-box;}
+  body{background:var(--paper); color:var(--ink); font-family:var(--sans); margin:0; line-height:1.6;}
+  .wrap{max-width:640px; margin:0 auto; padding:64px 24px 96px;}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:0.09em; text-transform:uppercase; color:var(--brass);}
+  h1{font-family:var(--serif); font-weight:600; font-size:30px; margin:10px 0 0; text-wrap:balance;}
+  .sub{color:var(--ink-soft); font-size:15px; margin-top:8px; max-width:56ch;}
+  nav{margin-top:40px; border-top:1px solid var(--line);}
+  a.card{
+    display:block; text-decoration:none; color:inherit;
+    padding:18px 4px; border-bottom:1px solid var(--line);
+  }
+  a.card .name{font-family:var(--serif); font-size:18px; font-weight:600;}
+  a.card .desc{color:var(--ink-soft); font-size:13.5px; margin-top:4px;}
+  a.card:hover .name{color:var(--brass);}
+  footer{margin-top:48px; font-size:12.5px; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Clark Jason Ngo</div>
+    <h1>EB&#8209;2 NIW Working Pages</h1>
+    <p class="sub">A private-by-intent index of the case-building pages for the National Interest Waiver petition. Anyone with a direct link can already view these &mdash; nothing below is meant for public circulation.</p>
+
+    <nav>
+      <a class="card" href="endeavor-docket.html">
+        <div class="name">Endeavor Docket</div>
+        <div class="desc">The Dhanasar framework, endeavor framing, action items, timeline, and evidence tracker in one page.</div>
+      </a>
+      <a class="card" href="colombo-hurd-assessment.html">
+        <div class="name">Colombo &amp; Hurd &mdash; Due Diligence</div>
+        <div class="desc">Firm reputation, the sales process, and a clause-by-clause read of the signed-ready retainer agreement.</div>
+      </a>
+    </nav>
+
+    <footer>This repository is currently public on GitHub. Given the personal and case-specific detail on these pages, consider making it private.</footer>
+  </div>
+</body>
+</html>
