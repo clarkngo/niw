@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Statement of Proposed Endeavor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF1E8; --paper-raised:#F8F9F3; --ink:#1C2420; --ink-soft:#4B564C;
+    --line:#CBD2C1; --oxblood:#8C3527; --oxblood-soft:#8C352714; --brass:#8A6A2F;
+    --moss:#4C6B3F; --moss-bg:#4C6B3F1A; --amber:#A8791E; --amber-bg:#A8791E1A; --gray-bg:#4B564C14;
+    --serif:"Fraunces", ui-serif, Georgia, serif;
+    --sans:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141813; --paper-raised:#1D231C; --ink:#E7E9E0; --ink-soft:#A3AC9B; --line:#333B30;
+      --oxblood:#D97862; --oxblood-soft:#D978621A; --brass:#C9A75C;
+      --moss:#8FBB79; --moss-bg:#8FBB7924; --amber:#D6A63B; --amber-bg:#D6A63B24; --gray-bg:#A3AC9B1A;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141813; --paper-raised:#1D231C; --ink:#E7E9E0; --ink-soft:#A3AC9B; --line:#333B30;
+    --oxblood:#D97862; --oxblood-soft:#D978621A; --brass:#C9A75C;
+    --moss:#8FBB79; --moss-bg:#8FBB7924; --amber:#D6A63B; --amber-bg:#D6A63B24; --gray-bg:#A3AC9B1A;
+  }
+  *{box-sizing:border-box;}
+  @media (prefers-reduced-motion: reduce){ *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;} }
+  body{background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.68; margin:0; -webkit-font-smoothing:antialiased;}
+  .page{max-width:800px; margin:0 auto; padding:0 24px 96px;}
+  h1,h2,h3{font-family:var(--serif); font-weight:600; text-wrap:balance; margin:0;}
+  p{max-width:70ch;}
+  a{color:var(--brass); text-decoration-color:var(--line);}
+  a:hover{text-decoration-color:var(--brass);}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:0.09em; text-transform:uppercase; color:var(--brass);}
+
+  header.masthead{position:sticky; top:0; background:var(--paper); border-bottom:1px solid var(--line); padding:22px 24px 16px; z-index:10;}
+  .masthead-inner{max-width:752px; margin:0 auto;}
+  .masthead-top{display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;}
+  header.masthead h1{font-size:25px;}
+  .masthead .sub{color:var(--ink-soft); font-size:13.5px; margin-top:4px;}
+  .stamp{font-family:var(--mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; border:1px solid var(--amber); color:var(--amber); padding:4px 10px; border-radius:2px; white-space:nowrap;}
+  nav.jump{display:flex; flex-wrap:wrap; gap:4px 16px; margin-top:12px; font-family:var(--mono); font-size:11.5px;}
+  nav.jump a{color:var(--ink-soft); text-decoration:none;}
+  nav.jump a:hover{color:var(--oxblood);}
+
+  section{padding-top:48px;}
+  section > .eyebrow{display:block;}
+  section h2{font-size:22px; margin-top:8px;}
+  .lede{color:var(--ink-soft); font-size:14.5px; margin-top:10px; max-width:64ch;}
+
+  .note{
+    background:var(--amber-bg); border-left:3px solid var(--amber);
+    padding:12px 16px; margin:16px 0; font-size:13px; color:var(--ink-soft);
+  }
+  .note strong{color:var(--ink); font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em; display:block; margin-bottom:4px;}
+  .note a{color:var(--brass);}
+
+  .endeavor-list{margin-top:14px; padding-left:0; list-style:none; counter-reset:en;}
+  .endeavor-list li{counter-increment:en; position:relative; padding:10px 0 10px 34px; border-bottom:1px solid var(--line); font-size:14.5px;}
+  .endeavor-list li:last-child{border-bottom:none;}
+  .endeavor-list li::before{content:counter(en); position:absolute; left:0; top:10px; font-family:var(--mono); font-size:12px; color:var(--brass); border:1px solid var(--line); width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center;}
+
+  .stat-row{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin:16px 0;}
+  .stat{background:var(--paper-raised); padding:14px 16px;}
+  .stat .num{font-family:var(--mono); font-size:20px; color:var(--oxblood); font-variant-numeric:tabular-nums;}
+  .stat .lbl{font-size:12px; color:var(--ink-soft); margin-top:3px;}
+  .stat .src{font-size:10.5px; margin-top:6px;}
+  .stat .src a{color:var(--ink-soft);}
+
+  .timeline{border-left:1px solid var(--line); margin:16px 0 0 6px; padding-left:22px;}
+  .tl-item{position:relative; padding-bottom:22px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{content:""; position:absolute; left:-27px; top:4px; width:9px; height:9px; border-radius:50%; background:var(--paper); border:2px solid var(--brass);}
+  .tl-phase{font-family:var(--mono); font-size:11.5px; color:var(--brass); letter-spacing:0.03em;}
+  .tl-title{font-size:14.5px; font-weight:600; margin-top:2px;}
+  .tl-item ul{margin:8px 0 0; padding-left:18px; font-size:13.5px; color:var(--ink-soft);}
+  .tl-item li{margin-top:5px;}
+
+  .prong-badge{
+    display:inline-block; font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em;
+    background:var(--moss-bg); color:var(--moss); padding:3px 9px; border-radius:2px; margin-bottom:10px;
+  }
+
+  .refs-table{width:100%; border-collapse:collapse; margin-top:12px; font-size:13.5px;}
+  .refs-table th{
+    font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft);
+    text-align:left; padding:8px 12px; border-bottom:1px solid var(--line);
+  }
+  .refs-table td{padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top;}
+  .refs-table tr:last-child td{border-bottom:none;}
+  .refs-cat{font-family:var(--mono); font-size:11px; color:var(--brass); white-space:nowrap;}
+
+  .checklist .item{display:flex; gap:12px; padding:9px 4px; border-bottom:1px solid var(--line); font-size:13.5px;}
+  .checklist .item:last-child{border-bottom:none;}
+  .checklist input[type="checkbox"]{
+    appearance:none; width:16px; height:16px; margin-top:2px; flex:none;
+    border:1.5px solid var(--ink-soft); border-radius:2px; cursor:pointer; position:relative; background:var(--paper-raised);
+  }
+  .checklist input[type="checkbox"]:checked{background:var(--moss); border-color:var(--moss);}
+  .checklist input[type="checkbox"]:checked::after{content:""; position:absolute; left:3.5px; top:0px; width:4px; height:8px; border:solid var(--paper-raised); border-width:0 2px 2px 0; transform:rotate(40deg);}
+  .checklist .item.done span{color:var(--ink-soft); text-decoration:line-through; text-decoration-color:var(--line);}
+
+  footer{margin-top:60px; padding-top:18px; border-top:1px solid var(--line); font-size:12px; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-top">
+        <div>
+          <h1>Statement of Proposed Endeavor</h1>
+          <div class="sub">Clark Jason Ngo &middot; Draft v2 &middot; for review, not filing</div>
+        </div>
+        <div class="stamp">Needs attorney review</div>
+      </div>
+      <nav class="jump">
+        <a href="#endeavor">Endeavor</a>
+        <a href="#prong1">Prong I</a>
+        <a href="#prong2">Prong II</a>
+        <a href="#plan">Forward plan</a>
+        <a href="#prong3">Prong III</a>
+        <a href="#references">References</a>
+        <a href="#checklist">Open items</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="endeavor">
+      <span class="eyebrow">The endeavor</span>
+      <h2>What this statement is about</h2>
+      <p style="margin-top:14px;">My proposed endeavor is to build and scale open, field-tested curricula and applied AI/cybersecurity teaching tools that prepare community college and university students &mdash; including underrepresented and non-traditional learners such as military veterans and their spouses &mdash; for careers in artificial intelligence and operational technology (OT) security, and to do so through direct partnership with the national institutions responsible for setting that curriculum agenda across the United States.</p>
+      <p>Concretely, this means three things I intend to keep doing, not just things I have already done:</p>
+      <ol class="endeavor-list">
+        <li><strong>Completing and launching a new undergraduate AI degree program</strong> at City University of Seattle &mdash; the BS in Artificial Intelligence, spanning human-AI interaction, agentic systems, and MLOps &mdash; and publishing the curriculum design as a reusable model other institutions can adopt.</li>
+        <li><strong>Extending my open-access teaching tools beyond a single university.</strong> AI Hub (a production RAG and multi-agent system on Google's Agent Developer Kit) and ScriptedOT (an OT/ICS security curriculum tool mapping real critical-infrastructure incidents to the Purdue Model and IEC 62443) are already built; the endeavor is to keep distributing them through national cybersecurity-education infrastructure, not to keep them CityU-internal.</li>
+        <li><strong>Deepening my work with NCyTE Center</strong> &mdash; the NSF-funded National Cybersecurity Training &amp; Education Center &mdash; where I have contributed to faculty-development workshops in 2025 and 2026 and am in active discussion about a formal collaboration on OT-security curriculum.</li>
+      </ol>
+    </section>
+
+    <section id="prong1">
+      <span class="prong-badge">Prong I</span>
+      <span class="eyebrow">Substantial merit &amp; national importance</span>
+      <h2>Why this matters nationally</h2>
+      <p style="margin-top:14px;">This endeavor addresses two documented, currently active national priorities &mdash; not a general sense that "AI is important."</p>
+
+      <p><strong>The cybersecurity workforce gap is specific and measured.</strong> ISC2's 2024 study put the global gap at 4.8 million unfilled positions, with more than 500,000 in the US alone. The 2025 follow-up found the binding constraint has shifted from headcount to skills: 95% of organizations report at least one unmet skill need. That's a training and curriculum problem before it's a hiring problem &mdash; exactly the level this work operates at.</p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <div class="num">4.8M</div>
+          <div class="lbl">Global cybersecurity workforce gap</div>
+          <div class="src"><a href="https://www.isc2.org/Insights/2024/10/ISC2-2024-Cybersecurity-Workforce-Study" target="_blank" rel="noopener">ISC2 2024 Workforce Study &rarr;</a></div>
+        </div>
+        <div class="stat">
+          <div class="num">500K+</div>
+          <div class="lbl">Unfilled US positions</div>
+          <div class="src"><a href="https://www.isc2.org/Insights/2024/10/ISC2-2024-Cybersecurity-Workforce-Study" target="_blank" rel="noopener">ISC2 2024 Workforce Study &rarr;</a></div>
+        </div>
+        <div class="stat">
+          <div class="num">2&ndash;4</div>
+          <div class="lbl">CISA federal staff on OT threat hunting nationwide</div>
+          <div class="src"><a href="https://www.gao.gov/products/gao-24-106576" target="_blank" rel="noopener">GAO-24-106576 &rarr;</a> &mdash; figure varies by source, confirm exact number</div>
+        </div>
+        <div class="stat">
+          <div class="num">51%</div>
+          <div class="lbl">ICS workforce with no formal cybersecurity credential</div>
+          <div class="src"><a href="https://www.sans.org/white-papers/sans-2024-state-ics-ot-cybersecurity" target="_blank" rel="noopener">SANS 2024 ICS/OT Report &rarr;</a></div>
+        </div>
+      </div>
+
+      <p><strong>The operational-technology security gap inside that shortage is narrower and more acute.</strong> A March 2024 <a href="https://www.gao.gov/products/gao-24-106576" target="_blank" rel="noopener">GAO report (GAO-24-106576)</a> found that CISA &mdash; the federal agency defending the country's power grid, water systems, and manufacturing infrastructure &mdash; has only a handful of federal staff doing OT-specific threat hunting and incident response nationwide, plus five contractors. CISA's own Executive Assistant Director for Cybersecurity has called hiring qualified ICS/OT staff "a universally acknowledged challenge." This is the gap ScriptedOT and my work with NCyTE Center directly target.</p>
+
+      <p><strong>Current federal policy treats both as active priorities.</strong> <a href="https://www.federalregister.gov/documents/2025/04/28/2025-07368/advancing-artificial-intelligence-education-for-american-youth" target="_blank" rel="noopener">EO&nbsp;14277, Advancing AI Education for American Youth</a> (Apr. 2025) and <a href="https://www.federalregister.gov/documents/2025/06/11/2025-10804/sustaining-select-efforts-to-strengthen-the-nations-cybersecurity-and-amending-executive-order-13694" target="_blank" rel="noopener">EO&nbsp;14306, Sustaining Select Efforts to Strengthen the Nation's Cybersecurity</a> (Jun. 2025) direct federal resources toward exactly this kind of early-pipeline technical education. <a href="https://www.federalregister.gov/documents/2026/06/05/2026-11415/promoting-advanced-artificial-intelligence-innovation-and-security" target="_blank" rel="noopener">EO&nbsp;14409, Promoting Advanced AI Innovation and Security</a> (Jun. 2026) pairs AI innovation with securing the systems AI touches &mdash; the same intersection my OWASP-aligned threat-modeling work sits in. And the <a href="https://www.opm.gov/news/news-releases/opm-announces-new-cybersecurity-role-for-us-tech-force/" target="_blank" rel="noopener">U.S. Tech Force</a> initiative is direct evidence the federal government is building hiring pipelines for this exact skill set.</p>
+
+      <p>NCyTE Center &mdash; the NSF-funded national center I already partner with &mdash; exists inside this same federal architecture. My work is not adjacent to national policy here; it operates inside the specific institutional structure the federal government has built to carry that policy out.</p>
+
+      <div class="note"><strong>Attorney note</strong>Confirm none of the above has been superseded as of filing date, and confirm the exact GAO staffing figure (reported as two to four federal staff across secondary coverage) against the primary GAO text.</div>
+    </section>
+
+    <section id="prong2">
+      <span class="prong-badge">Prong II</span>
+      <span class="eyebrow">Well positioned to advance it</span>
+      <h2>Why I'm positioned to do this</h2>
+      <p style="margin-top:14px;">USCIS's own evidence categories for this prong: education/skills, a record of success in similar efforts, progress already made, interest from outside parties, and a specific forward plan. Organized that way below, deliberately &mdash; not a resume in prose form.</p>
+
+      <p><strong>Education and technical foundation map directly onto the endeavor.</strong> A foreign bachelor's in finance, an MS in Computer Science (2020, GPA 3.9, President's Honor), an MBA (2025), and an MS in Data Science in progress isn't four unrelated credentials &mdash; the MSCS underlies the AI Hub engineering work, the MBA underlies the BSAI program proposal, the current coursework extends the technical depth the next phase needs.</p>
+      <div class="note"><strong>Attorney note</strong>Frame this trajectory explicitly as intentional layering toward the endeavor &mdash; do not let it read as an unexplained sequence of degrees.</div>
+
+      <p><strong>A track record of success in materially similar work.</strong> As Program Manager for the Amazon AWS Military Apprenticeship Program (2020&ndash;2021), I trained 25 veterans and military spouses, placed 93% into on-the-job training with AWS, and cut program operating cost by 40% ($72,000 over two years) &mdash; the same activity (building a technical-education pipeline with an outside institution) this endeavor proposes at national scale through NCyTE. Two years as a production Software Engineer at eBay (2021&ndash;2023) &mdash; cutting incident root-cause identification from one minute to ten seconds &mdash; establish the engineering competence AI Hub and ScriptedOT are built on.</p>
+
+      <p><strong>Progress already made toward this specific endeavor:</strong></p>
+      <ul style="font-size:14.5px; color:var(--ink-soft);">
+        <li>The BS in Artificial Intelligence proposal has progressed through CityU's Academic Affairs Committee.</li>
+        <li>AI Hub is live and in active use by CityU students and faculty &mdash; not a prototype.</li>
+        <li>ScriptedOT has been demonstrated in the field at an NSF-funded NCyTE faculty workshop (August 2026), identified by facilitators as effective for student engagement.</li>
+      </ul>
+
+      <p><strong>Independent interest from the institution this endeavor depends on.</strong> NCyTE Center has engaged with this work twice, independently of CityU: assisting its "Implications of AI for Educators" workshop in 2025, and hosting a ScriptedOT demonstration at its OT-security faculty academy in 2026, after which its facilitators raised the possibility of a formal collaboration directly, unprompted.</p>
+      <div class="note"><strong>Attorney note</strong>As of this draft, that collaboration is a verbal conversation, not a signed engagement &mdash; state it honestly as "under discussion." Do not file until it is either formalized or the wording is revised to remove any implication that it already is.</div>
+
+      <p><strong>Letters of support.</strong> Independent, non-CityU letters are being sought from Terra Bandin (AWS, speaks to the Amazon apprenticeship outcomes), Pavel Liu (eBay, speaks to the production-engineering track record), and John Sands and Jiri Jirik (NCyTE Center, speak to the 2025/2026 engagements and the collaboration discussion). Chosen deliberately because none report to me, work at CityU, or have institutional reason to write beyond having seen the work directly.</p>
+      <div class="note"><strong>Attorney note</strong>In progress as of this draft &mdash; do not treat any of these as secured until confirmed in writing.</div>
+    </section>
+
+    <section id="plan">
+      <span class="eyebrow">Prong II, continued &mdash; the forward-looking plan</span>
+      <h2>What I'm positioned to do next</h2>
+      <p class="lede">Every item below is a concrete, checkable milestone, not an aspiration.</p>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-phase">MONTHS 0&ndash;6 &middot; through early 2027</div>
+          <div class="tl-title">Formalize what is currently informal</div>
+          <ul>
+            <li>Convert the verbal collaboration discussion with Jiri Jirik and John Sands into a defined engagement &mdash; at minimum a documented plan to contribute an OT-security module to NCyTE's national curriculum.</li>
+            <li>Submit the agentic-AI threat-modeling work as a position paper to IEEE SaTML 2027 (due Sep 29, 2026), moving it from a regional talk to a peer-reviewed venue.</li>
+            <li>Carry the BSAI proposal through the remainder of CityU's approval process, targeting formal sign-off in this window.</li>
+            <li>Present ScriptedOT and AI Hub outside CityU's own events &mdash; OWASP Seattle and RSA Conference 2027 (CFP opens Sep 15, 2026) are already in motion.</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-phase">MONTHS 6&ndash;12</div>
+          <div class="tl-title">First outcomes, first evidence of reach beyond CityU</div>
+          <ul>
+            <li>Launch the BSAI program's first cohort, if approval lands on schedule; begin tracking enrollment and outcome data.</li>
+            <li>Ship a public, versioned open-source release of ScriptedOT and AI Hub components, so adoption can be measured rather than asserted.</li>
+            <li>If the NCyTE engagement formalizes on schedule, deliver the first jointly developed module or workshop session.</li>
+            <li>Complete the MS in Data Science.</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-phase">MONTHS 12&ndash;24</div>
+          <div class="tl-title">Document the model, extend it past one institution</div>
+          <ul>
+            <li>Publish the BSAI program's first-year outcomes as a reusable model other colleges can adapt.</li>
+            <li>Expand the NCyTE partnership from a single module into a recurring role, if the first engagement went well.</li>
+            <li>Continue the publication and conference track record (SaTML, RSA, OWASP, and any resulting invitations).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="prong3">
+      <span class="prong-badge">Prong III</span>
+      <span class="eyebrow">Beneficial to waive the job offer</span>
+      <h2>Why a waiver serves the national interest</h2>
+      <p style="margin-top:14px;">The strongest version of this argument for someone in my position isn't "I'm irreplaceable" &mdash; it's structural: PERM tests the labor market for one job at one employer, and this endeavor was never shaped like that.</p>
+
+      <p><strong>Labor certification is built to test a single job at a single employer &mdash; this endeavor isn't that.</strong> My endeavor doesn't reduce to one position: it already spans City University of Seattle (where I'm employed) and NCyTE Center (an independent NSF-funded national center whose workshops I've contributed to, not an employer), and the forward-looking plan explicitly extends it to the community colleges NCyTE serves nationally. Forcing this through a PERM filing tied to one institution would artificially shrink the endeavor to fit the process, rather than the process serving the endeavor.</p>
+
+      <p><strong>The field-level data explains why flexibility matters more than a single hire would</strong> &mdash; this isn't a claim that I'm impossible to replace, it's that the shortage is a pipeline problem, not a staffing problem a single PERM filing could solve even in principle:</p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <div class="num">29%</div>
+          <div class="lbl">Projected growth, Information Security Analysts, 2024&ndash;2034</div>
+          <div class="src"><a href="https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook &rarr;</a></div>
+        </div>
+        <div class="stat">
+          <div class="num">16,000</div>
+          <div class="lbl">Projected annual openings</div>
+          <div class="src"><a href="https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook &rarr;</a></div>
+        </div>
+        <div class="stat">
+          <div class="num">$124,910</div>
+          <div class="lbl">Median annual wage, May 2024</div>
+          <div class="src"><a href="https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook &rarr;</a></div>
+        </div>
+        <div class="stat">
+          <div class="num">&#9733;</div>
+          <div class="lbl">"Bright Outlook: Rapid Growth" federal designation</div>
+          <div class="src"><a href="https://www.onetonline.org/link/summary/15-1212.00" target="_blank" rel="noopener">O*NET OnLine, SOC 15-1212.00 &rarr;</a></div>
+        </div>
+      </div>
+
+      <p>Read together, these aren't evidence that one hire is scarce &mdash; they're evidence that the <em>pipeline itself</em> is the bottleneck, which is exactly the level my endeavor operates at. Even a successful PERM filing &mdash; one job, filled &mdash; would leave the underlying 29%-growth, 16,000-opening pipeline problem entirely unaffected. The national interest here is served by the work continuing across institutions, not by filling one position.</p>
+
+      <div class="note"><strong>Attorney note</strong>The HR-confidentiality/physical-presence evidence category common in some Prong III petitions doesn't fit this case and shouldn't be forced in &mdash; this argument is structural/pipeline-based, not a physical-presence or security-clearance argument. Re-verify the BLS and O*NET figures against the live pages close to filing, since both update on a rolling basis.</div>
+    </section>
+
+    <section id="references">
+      <span class="eyebrow">Full source list</span>
+      <h2>References</h2>
+      <p class="lede">Every citation used above, in one place, for direct review.</p>
+      <table class="refs-table">
+        <thead><tr><th>Category</th><th>Source</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><td class="refs-cat">Industry data</td><td><a href="https://www.isc2.org/Insights/2024/10/ISC2-2024-Cybersecurity-Workforce-Study" target="_blank" rel="noopener">ISC2 2024 Cybersecurity Workforce Study</a></td><td>Global/US workforce gap figures &mdash; Prong I</td></tr>
+          <tr><td class="refs-cat">Government</td><td><a href="https://www.gao.gov/products/gao-24-106576" target="_blank" rel="noopener">GAO-24-106576</a> &mdash; Cybersecurity: Improvements Needed in Addressing Risks to Operational Technology</td><td>CISA OT staffing gap &mdash; Prong I</td></tr>
+          <tr><td class="refs-cat">Industry data</td><td><a href="https://www.sans.org/white-papers/sans-2024-state-ics-ot-cybersecurity" target="_blank" rel="noopener">SANS 2024 State of ICS/OT Cybersecurity Report</a></td><td>ICS workforce experience/credential gap &mdash; Prong I</td></tr>
+          <tr><td class="refs-cat">Federal policy</td><td><a href="https://www.federalregister.gov/documents/2025/04/28/2025-07368/advancing-artificial-intelligence-education-for-american-youth" target="_blank" rel="noopener">EO 14277</a> &mdash; Advancing AI Education for American Youth (Apr. 23, 2025)</td><td>National-priority framing &mdash; Prong I</td></tr>
+          <tr><td class="refs-cat">Federal policy</td><td><a href="https://www.federalregister.gov/documents/2025/06/11/2025-10804/sustaining-select-efforts-to-strengthen-the-nations-cybersecurity-and-amending-executive-order-13694" target="_blank" rel="noopener">EO 14306</a> &mdash; Sustaining Select Efforts to Strengthen the Nation's Cybersecurity (Jun. 6, 2025)</td><td>National-priority framing &mdash; Prong I</td></tr>
+          <tr><td class="refs-cat">Federal policy</td><td><a href="https://www.federalregister.gov/documents/2026/06/05/2026-11415/promoting-advanced-artificial-intelligence-innovation-and-security" target="_blank" rel="noopener">EO 14409</a> &mdash; Promoting Advanced AI Innovation and Security (Jun. 2, 2026)</td><td>Ties AI-security thread to national policy &mdash; Prong I</td></tr>
+          <tr><td class="refs-cat">Government</td><td><a href="https://www.opm.gov/news/news-releases/opm-announces-new-cybersecurity-role-for-us-tech-force/" target="_blank" rel="noopener">OPM &mdash; U.S. Tech Force, Information Cybersecurity Specialist</a></td><td>Evidence of active federal hiring pipeline &mdash; Prong I</td></tr>
+          <tr><td class="refs-cat">Department of Labor</td><td><a href="https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook &mdash; Information Security Analysts</a></td><td>Growth rate, openings, wage &mdash; Prong III</td></tr>
+          <tr><td class="refs-cat">Department of Labor</td><td><a href="https://www.onetonline.org/link/summary/15-1212.00" target="_blank" rel="noopener">O*NET OnLine, SOC 15-1212.00</a></td><td>"Bright Outlook" federal designation &mdash; Prong III</td></tr>
+          <tr><td class="refs-cat">Legal framework</td><td><a href="https://www.justice.gov/eoir/page/file/920996/dl" target="_blank" rel="noopener">Matter of Dhanasar, 26 I&amp;N Dec. 884 (AAO 2016)</a></td><td>The three-prong test itself</td></tr>
+          <tr><td class="refs-cat">Legal framework</td><td><a href="https://www.uscis.gov/policy-manual/volume-6-part-f-chapter-5" target="_blank" rel="noopener">USCIS Policy Manual, Vol. 6, Part F, Ch. 5</a></td><td>Current USCIS evidentiary guidance per prong</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="checklist">
+      <span class="eyebrow">Before this is petition-ready</span>
+      <h2>Open items</h2>
+      <div class="checklist" style="margin-top:14px;">
+        <div class="item" data-key="es-245k"><input type="checkbox"><span>Attorney sign-off on the 245(k)/national-importance framing</span></div>
+        <div class="item" data-key="es-gao"><input type="checkbox"><span>Confirm exact GAO staffing figure (2 vs. 4) against the primary report text</span></div>
+        <div class="item" data-key="es-ncyte"><input type="checkbox"><span>Confirm exact status of the NCyTE collaboration before filing &mdash; don't overstate past "under discussion"</span></div>
+        <div class="item" data-key="es-letters"><input type="checkbox"><span>Cross-check every claim against what letters from Terra, Pavel, John, and Jiri actually say once received</span></div>
+        <div class="item" data-key="es-blsonet"><input type="checkbox"><span>Re-verify BLS growth figure and O*NET Bright Outlook designation close to filing date</span></div>
+      </div>
+    </section>
+
+    <footer>Draft v2 &middot; personal working document, not legal advice, not a filed document. Cross-check every legal claim with a licensed attorney before relying on it.</footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  var STORE_KEY = "endeavor-statement-checklist-v1";
+  var state = {};
+  try{ state = JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); }catch(e){ state = {}; }
+  function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){} }
+  document.querySelectorAll(".checklist .item[data-key]").forEach(function(item){
+    var key = item.getAttribute("data-key");
+    var box = item.querySelector("input[type=checkbox]");
+    if(!box) return;
+    var checked = !!state[key];
+    box.checked = checked;
+    item.classList.toggle("done", checked);
+    box.addEventListener("change", function(){
+      state[key] = box.checked;
+      item.classList.toggle("done", box.checked);
+      save();
+    });
+  });
+})();
+</script>
+</body>
+</html>
