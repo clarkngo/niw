@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outreach Log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF1E8; --paper-raised:#F8F9F3; --ink:#1C2420; --ink-soft:#4B564C;
+    --line:#CBD2C1; --oxblood:#8C3527; --oxblood-soft:#8C352714; --brass:#8A6A2F;
+    --moss:#4C6B3F; --moss-bg:#4C6B3F1A; --amber:#A8791E; --amber-bg:#A8791E1A; --gray-bg:#4B564C14;
+    --serif:"Fraunces", ui-serif, Georgia, serif;
+    --sans:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141813; --paper-raised:#1D231C; --ink:#E7E9E0; --ink-soft:#A3AC9B; --line:#333B30;
+      --oxblood:#D97862; --oxblood-soft:#D978621A; --brass:#C9A75C;
+      --moss:#8FBB79; --moss-bg:#8FBB7924; --amber:#D6A63B; --amber-bg:#D6A63B24; --gray-bg:#A3AC9B1A;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141813; --paper-raised:#1D231C; --ink:#E7E9E0; --ink-soft:#A3AC9B; --line:#333B30;
+    --oxblood:#D97862; --oxblood-soft:#D978621A; --brass:#C9A75C;
+    --moss:#8FBB79; --moss-bg:#8FBB7924; --amber:#D6A63B; --amber-bg:#D6A63B24; --gray-bg:#A3AC9B1A;
+  }
+  *{box-sizing:border-box;}
+  @media (prefers-reduced-motion: reduce){ *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;} }
+  body{background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.6; margin:0; -webkit-font-smoothing:antialiased;}
+  .page{max-width:800px; margin:0 auto; padding:0 24px 96px;}
+  h1,h2,h3{font-family:var(--serif); font-weight:600; text-wrap:balance; margin:0;}
+  a{color:var(--brass);}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:0.09em; text-transform:uppercase; color:var(--brass);}
+
+  header.masthead{border-bottom:1px solid var(--line); padding:26px 0 18px;}
+  header.masthead .back{font-family:var(--mono); font-size:12px; color:var(--ink-soft); text-decoration:none;}
+  header.masthead h1{font-size:26px; margin-top:8px;}
+  header.masthead .sub{color:var(--ink-soft); font-size:14px; margin-top:6px; max-width:60ch;}
+
+  .summary-row{display:flex; gap:1px; background:var(--line); border:1px solid var(--line); margin-top:20px;}
+  .summary-cell{flex:1; background:var(--paper-raised); padding:12px 14px; text-align:center;}
+  .summary-cell .n{font-family:var(--mono); font-size:20px; color:var(--oxblood); font-variant-numeric:tabular-nums;}
+  .summary-cell .l{font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); margin-top:2px;}
+
+  .contact{margin-top:32px; border:1px solid var(--line); border-radius:3px; overflow:hidden;}
+  .contact-head{background:var(--paper-raised); padding:16px 20px; display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap;}
+  .contact-name{font-family:var(--serif); font-size:18px; font-weight:600;}
+  .contact-meta{font-size:12.5px; color:var(--ink-soft); margin-top:3px;}
+  .purpose-tag{font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:0.05em; background:var(--gray-bg); color:var(--ink-soft); padding:2px 8px; border-radius:2px; display:inline-block; margin-top:6px;}
+
+  .status-btn{
+    font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.05em;
+    padding:5px 12px; border-radius:2px; border:1px solid transparent; cursor:pointer;
+    background:var(--gray-bg); color:var(--ink-soft); white-space:nowrap;
+  }
+  .status-btn[data-state="sent"]{background:var(--amber-bg); color:var(--amber);}
+  .status-btn[data-state="replied"]{background:var(--moss-bg); color:var(--moss);}
+  .status-btn[data-state="received"]{background:var(--moss); color:var(--paper-raised);}
+  .status-btn[data-state="declined"]{background:var(--oxblood-soft); color:var(--oxblood);}
+
+  .date-field{
+    font-family:var(--mono); font-size:12px; border:1px solid var(--line); background:var(--paper);
+    color:var(--ink); padding:4px 8px; border-radius:2px; width:130px; margin-top:8px;
+  }
+  .date-label{font-family:var(--mono); font-size:10px; text-transform:uppercase; color:var(--ink-soft); letter-spacing:0.05em; display:block; margin-top:8px;}
+
+  .steps{padding:4px 20px 16px;}
+  .step{border-top:1px solid var(--line); padding:14px 0;}
+  .step-head{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;}
+  .step-label{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--brass);}
+  details{margin-top:10px;}
+  summary{cursor:pointer; font-size:13px; color:var(--brass); font-family:var(--mono); text-transform:uppercase; letter-spacing:0.04em; font-size:10.5px;}
+  .msg-body{
+    margin-top:10px; background:var(--paper); border:1px solid var(--line); border-radius:3px;
+    padding:14px 16px; font-size:13.5px; white-space:pre-wrap; color:var(--ink);
+  }
+
+  footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font-size:12px; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <a class="back" href="index.html">&larr; NIW working pages</a>
+    <h1>Outreach Log</h1>
+    <div class="sub">Every letter/collaboration ask, the exact message sent, and its status &mdash; click a status pill to update it, click a step to expand the message text.</div>
+    <div class="summary-row" id="summary-row">
+      <div class="summary-cell"><div class="n" id="count-total">0</div><div class="l">Contacts</div></div>
+      <div class="summary-cell"><div class="n" id="count-sent">0</div><div class="l">Sent</div></div>
+      <div class="summary-cell"><div class="n" id="count-replied">0</div><div class="l">Replied</div></div>
+      <div class="summary-cell"><div class="n" id="count-received">0</div><div class="l">Letters in hand</div></div>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="contact" data-contact="terra">
+      <div class="contact-head">
+        <div>
+          <div class="contact-name">Terra Bandin</div>
+          <div class="contact-meta">Amazon Web Services &middot; independent observer, AWS Military Apprenticeship</div>
+          <span class="purpose-tag">Letter &mdash; independent</span>
+        </div>
+        <div>
+          <button class="status-btn" data-key="terra-1" data-state="sent">Sent</button>
+          <span class="date-label">Date sent</span>
+          <input class="date-field" data-key="terra-1-date" type="text" placeholder="e.g. Sep 2026" value="Sep 2026">
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-head"><span class="step-label">Message &middot; LinkedIn</span></div>
+          <details>
+            <summary>Show message text</summary>
+            <div class="msg-body">Hi Terra,
+
+It's been a few years — I hope you're doing well! I don't know if you remember me, but I was the program manager on the CityU side of the Amazon AWS Military Apprenticeship Program back in 2020-2021, working with the veteran/military-spouse cohorts you helped place into AWS OJT roles.
+
+I'm reaching out because I'm putting together some materials for an immigration petition (an EB-2 National Interest Waiver), and that apprenticeship program — the outcomes we got (25 veterans trained, 93% placed into AWS on-the-job training, the budget efficiencies we found) — is actually one of the strongest, most concrete things I can point to. Since you saw that work firsthand from the AWS side, would you be open to writing a short letter describing what you remember about the program and my role in it? It doesn't need to be long — even a few paragraphs in your own words about what you observed would mean a lot.
+
+No pressure at all if this isn't something you can do right now — totally understand if timing or company policy makes it tricky. But if you're open to it, I'd be really grateful, and happy to send over whatever context would make it easier (dates, specifics, whatever jogs the memory).
+
+Thanks so much either way, and hope all is well.
+
+Clark</div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact" data-contact="pavel">
+      <div class="contact-head">
+        <div>
+          <div class="contact-name">Pavel Liu</div>
+          <div class="contact-meta">eBay &middot; former colleague, ad-platform team</div>
+          <span class="purpose-tag">Letter &mdash; professional track record</span>
+        </div>
+        <div>
+          <button class="status-btn" data-key="pavel-1" data-state="notsent">Not sent</button>
+          <span class="date-label">Date sent</span>
+          <input class="date-field" data-key="pavel-1-date" type="text" placeholder="e.g. Sep 2026">
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-head"><span class="step-label">Step 1 &middot; text, reconnect only</span></div>
+          <details>
+            <summary>Show message text</summary>
+            <div class="msg-body">Hey Pavel! It's Clark, from the eBay ad platform team. It's been a minute — hope you're doing well. Are you still on this number? Would love to catch up.</div>
+          </details>
+        </div>
+        <div class="step">
+          <div class="step-head"><span class="step-label">Step 2 &middot; text, once he replies</span></div>
+          <details>
+            <summary>Show message text</summary>
+            <div class="msg-body">Good to hear from you! So I'm actually reaching out for a favor — I'm putting together an immigration petition (EB-2 NIW) and part of it is showing my professional track record. The MTTR work we did (cutting root-cause ID from 1 min to 10 sec) and the A/B testing monitoring stuff is honestly some of my strongest material. Would you be up for writing a short letter — a few paragraphs — about the work I did on your team? No worries at all if it's not something you can do, just figured I'd ask since you saw that work firsthand.</div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact" data-contact="sands">
+      <div class="contact-head">
+        <div>
+          <div class="contact-name">John Sands</div>
+          <div class="contact-meta">NCyTE Center / Moraine Valley CC &middot; workshop facilitator, 2025 &amp; Aug 2026</div>
+          <span class="purpose-tag">Letter &mdash; independent, national center</span>
+        </div>
+        <div>
+          <button class="status-btn" data-key="sands-1" data-state="notsent">Not sent</button>
+          <span class="date-label">Date sent</span>
+          <input class="date-field" data-key="sands-1-date" type="text" placeholder="e.g. Sep 2026">
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-head"><span class="step-label">Message &middot; LinkedIn or email</span></div>
+          <details>
+            <summary>Show message text</summary>
+            <div class="msg-body">Hi John,
+
+This is Clark Ngo — we met through the NCyTE "Implications of AI for Educators" workshop in 2025, and again more recently at the OT Security Faculty Academy in August 2026, where I showed you ScriptedOT at the end and you mentioned it was good for engagement.
+
+I'm putting together an immigration petition (an EB-2 National Interest Waiver) and I'm gathering input from people in the field who've seen my work firsthand. Would you be open to writing a short letter — a few paragraphs — describing what you saw at the workshops and your impressions of ScriptedOT? It would mean a lot coming from someone at NCyTE given the national scope of the center's work.
+
+No pressure if the timing's not right, and happy to send more background to make it easier.
+
+Thanks so much,
+Clark</div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact" data-contact="jiri">
+      <div class="contact-head">
+        <div>
+          <div class="contact-name">Jiri Jirik</div>
+          <div class="contact-meta">NCyTE Center &middot; raised collaboration after seeing 2026 tools showcase</div>
+          <span class="purpose-tag">Collaboration first, letter later</span>
+        </div>
+        <div>
+          <button class="status-btn" data-key="jiri-1" data-state="notsent">Not sent</button>
+          <span class="date-label">Date sent</span>
+          <input class="date-field" data-key="jiri-1-date" type="text" placeholder="e.g. Sep 2026">
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-head"><span class="step-label">Step 1 &middot; collaboration only, no letter ask</span></div>
+          <details>
+            <summary>Show message text</summary>
+            <div class="msg-body">Hi Jiri, this is Clark Ngo — we met through the NCyTE workshops, most recently in 2026 when you saw some of the AI tools I've built. You mentioned being open to exploring a collaboration, and I'd genuinely love to follow up on that if the timing still works. Happy to set up a call whenever's convenient.</div>
+          </details>
+        </div>
+        <div class="step">
+          <div class="step-head"><span class="step-label">Step 2 &middot; letter ask &mdash; only after step 1 has a real response</span></div>
+          <div class="msg-body" style="font-style:italic; color:var(--ink-soft);">Not drafted yet — write this once the collaboration conversation actually happens, so the letter can reference something real instead of just the past workshops.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact" data-contact="marvin">
+      <div class="contact-head">
+        <div>
+          <div class="contact-name">Marvin Gold</div>
+          <div class="contact-meta">Apprentice, AWS Military Apprenticeship 2020&ndash;21 &middot; now Engineering Manager, Meta</div>
+          <span class="purpose-tag">Letter &mdash; beneficiary testimony</span>
+        </div>
+        <div>
+          <button class="status-btn" data-key="marvin-1" data-state="sent">Sent</button>
+          <span class="date-label">Date sent</span>
+          <input class="date-field" data-key="marvin-1-date" type="text" placeholder="e.g. Sep 2026" value="Sep 2026">
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-head"><span class="step-label">Message &middot; LinkedIn, combined (reconnect + ask, like Terra's)</span></div>
+          <details>
+            <summary>Show message text</summary>
+            <div class="msg-body">Hey Marvin! It's Clark — I was the program manager for your cohort in the AWS Military Apprenticeship Program back in 2020-2021. It's been a few years, and I've actually kept track of how things turned out — AWS, then SentinelOne, and now Engineering Manager at Meta. That's a genuinely great run, and I'm glad to see it.
+
+I'm reaching out because I'm putting together some materials for an immigration petition (an EB-2 National Interest Waiver), and the apprenticeship program is one of the strongest things I can point to. Would you be open to writing a short letter — even just a few paragraphs — about your experience in the program and how it's shaped your career since? Coming from someone who actually went through it, with the trajectory you've had, would mean a lot — very different from someone describing it from the outside.
+
+If you're up for it, it'd help to include the specifics: your titles and rough dates at AWS, SentinelOne, and Meta, and in your own words what from the apprenticeship you'd credit for that path. No pressure at all if the timing's not right.
+
+Thanks so much either way, and congrats on everything since.
+
+Clark</div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>Personal working log, not part of the petition itself. Update statuses and dates as things move — everything saves locally in this browser.</footer>
+</div>
+
+<script>
+(function(){
+  var STORE_KEY = "outreach-log-v1";
+  var state = {};
+  try{ state = JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); }catch(e){ state = {}; }
+  function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){} }
+
+  var cycle = { notsent: "sent", sent: "replied", replied: "received", received: "declined", declined: "notsent" };
+  var labels = { notsent: "Not sent", sent: "Sent", replied: "Replied", received: "Letter received", declined: "Declined" };
+
+  function updateSummary(){
+    var total = document.querySelectorAll(".contact").length;
+    var sent = 0, replied = 0, received = 0;
+    document.querySelectorAll(".status-btn[data-key]").forEach(function(btn){
+      var s = btn.getAttribute("data-state");
+      if(s === "sent" || s === "replied" || s === "received") sent++;
+      if(s === "replied" || s === "received") replied++;
+      if(s === "received") received++;
+    });
+    document.getElementById("count-total").textContent = total;
+    document.getElementById("count-sent").textContent = sent;
+    document.getElementById("count-replied").textContent = replied;
+    document.getElementById("count-received").textContent = received;
+  }
+
+  document.querySelectorAll(".status-btn[data-key]").forEach(function(btn){
+    var key = btn.getAttribute("data-key");
+    var saved = state[key];
+    if(saved && labels[saved]){
+      btn.setAttribute("data-state", saved);
+      btn.textContent = labels[saved];
+    }
+    btn.addEventListener("click", function(){
+      var current = btn.getAttribute("data-state") || "notsent";
+      var next = cycle[current] || "notsent";
+      btn.setAttribute("data-state", next);
+      btn.textContent = labels[next];
+      state[key] = next;
+      save();
+      updateSummary();
+    });
+  });
+
+  document.querySelectorAll(".date-field[data-key]").forEach(function(field){
+    var key = field.getAttribute("data-key");
+    if(state[key]) field.value = state[key];
+    field.addEventListener("change", function(){
+      state[key] = field.value;
+      save();
+    });
+  });
+
+  updateSummary();
+})();
+</script>
+</body>
+</html>
