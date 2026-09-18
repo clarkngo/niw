@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NIW Talking Points</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF1E8; --paper-raised:#F8F9F3; --ink:#1C2420; --ink-soft:#4B564C;
+    --line:#CBD2C1; --oxblood:#8C3527; --oxblood-soft:#8C352714; --brass:#8A6A2F;
+    --moss:#4C6B3F; --moss-bg:#4C6B3F1A;
+    --serif:"Fraunces", ui-serif, Georgia, serif;
+    --sans:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141813; --paper-raised:#1D231C; --ink:#E7E9E0; --ink-soft:#A3AC9B; --line:#333B30;
+      --oxblood:#D97862; --oxblood-soft:#D978621A; --brass:#C9A75C; --moss:#8FBB79; --moss-bg:#8FBB7924;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141813; --paper-raised:#1D231C; --ink:#E7E9E0; --ink-soft:#A3AC9B; --line:#333B30;
+    --oxblood:#D97862; --oxblood-soft:#D978621A; --brass:#C9A75C; --moss:#8FBB79; --moss-bg:#8FBB7924;
+  }
+  *{box-sizing:border-box;}
+  @media (prefers-reduced-motion: reduce){ *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;} }
+  body{background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.65; margin:0; -webkit-font-smoothing:antialiased;}
+  .page{max-width:720px; margin:0 auto; padding:0 24px 96px;}
+  h1,h2,h3{font-family:var(--serif); font-weight:600; text-wrap:balance; margin:0;}
+  a{color:var(--brass);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--brass); outline-offset:2px;}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:0.09em; text-transform:uppercase; color:var(--brass);}
+
+  header{border-bottom:1px solid var(--line); padding:36px 0 22px;}
+  header .back{font-family:var(--mono); font-size:12px; color:var(--ink-soft); text-decoration:none;}
+  header h1{font-size:28px; margin-top:10px;}
+  header p{color:var(--ink-soft); font-size:14.5px; margin:8px 0 0; max-width:58ch;}
+
+  .hero{
+    margin-top:32px; background:var(--paper-raised); border:1px solid var(--line);
+    border-left:3px solid var(--brass); padding:20px 22px;
+  }
+  .hero .label{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--brass);}
+  .hero blockquote{margin:8px 0 0; font-family:var(--serif); font-size:19px; line-height:1.5;}
+
+  .tp{padding:26px 0; border-bottom:1px solid var(--line);}
+  .tp:last-of-type{border-bottom:none;}
+  .tp .q{font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft);}
+  .tp blockquote{margin:8px 0 0; font-size:16px; padding-left:14px; border-left:2px solid var(--line);}
+  .tp .why{font-size:13px; color:var(--ink-soft); margin-top:8px;}
+  .copy{
+    margin-top:10px; font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em;
+    background:transparent; color:var(--brass); border:1px solid var(--line); padding:4px 10px; border-radius:2px; cursor:pointer;
+  }
+  .copy:hover{border-color:var(--brass);}
+
+  h2.section{font-size:20px; margin-top:44px;}
+  .avoid{margin-top:14px; padding:0; list-style:none; border:1px solid var(--line); background:var(--paper-raised);}
+  .avoid li{padding:12px 16px; border-bottom:1px solid var(--line); font-size:14px;}
+  .avoid li:last-child{border-bottom:none;}
+  .avoid strong{color:var(--oxblood);}
+
+  footer{margin-top:48px; font-size:12.5px; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <a class="back" href="index.html">&larr; NIW working pages</a>
+    <h1>NIW Talking Points</h1>
+    <p>What to say when friends ask. Honest, easy to repeat, and light on the sensitive details.</p>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="label">The 15-second version</div>
+      <blockquote id="hero-text">&ldquo;It's a green card category where you make the case that your work benefits the US, so you don't need an employer to sponsor you. Mine's about AI and cybersecurity education: training students, community college faculty, and veterans for those careers.&rdquo;</blockquote>
+      <button class="copy" data-target="hero-text">Copy</button>
+    </div>
+
+    <div class="tp">
+      <div class="q">What's your case actually about?</div>
+      <blockquote id="tp1">&ldquo;I've been building AI and security teaching tools and a new AI degree program, and working with a national cybersecurity education center. The pitch is that there's a real shortage of people trained in this, and what I'm building helps close it.&rdquo;</blockquote>
+      <button class="copy" data-target="tp1">Copy</button>
+    </div>
+
+    <div class="tp">
+      <div class="q">Where are you in the process?</div>
+      <blockquote id="tp2">&ldquo;Still in the build phase: gathering evidence and letters, getting the legal questions answered before I file anything. I'd rather file once and file well than rush it.&rdquo;</blockquote>
+      <div class="why">True, and it doesn't commit you to a timeline.</div>
+      <button class="copy" data-target="tp2">Copy</button>
+    </div>
+
+    <div class="tp">
+      <div class="q">How long does it take?</div>
+      <blockquote id="tp3">&ldquo;Depends on the route. Anywhere from a few months to a couple of years once it's filed, and I'm still building the case first.&rdquo;</blockquote>
+      <button class="copy" data-target="tp3">Copy</button>
+    </div>
+
+    <div class="tp">
+      <div class="q">Do you have a lawyer?</div>
+      <blockquote id="tp4">&ldquo;Still weighing my options. I'm comparing a few before I commit.&rdquo;</blockquote>
+      <div class="why">Don't name a firm or a price, even with close friends &mdash; it invites opinions and gets repeated.</div>
+      <button class="copy" data-target="tp4">Copy</button>
+    </div>
+
+    <div class="tp">
+      <div class="q">Do you think you'll get it?</div>
+      <blockquote id="tp5">&ldquo;I think the case is solid and getting stronger, but there are no guarantees, so I'm being careful about how I build it.&rdquo;</blockquote>
+      <div class="why">Skip &ldquo;definitely.&rdquo; Confidence sounds fine now and awkward later.</div>
+      <button class="copy" data-target="tp5">Copy</button>
+    </div>
+
+    <div class="tp">
+      <div class="q">They ask about your status or history</div>
+      <blockquote id="tp6">&ldquo;Long story on the status side. I'll tell you over coffee sometime, but the short version is I'm working on a plan.&rdquo;</blockquote>
+      <div class="why">Keep the details for people you'd trust with them.</div>
+      <button class="copy" data-target="tp6">Copy</button>
+    </div>
+
+    <div class="tp">
+      <div class="q">They offer to help</div>
+      <blockquote id="tp7">&ldquo;Honestly, the most useful thing is if you know a good immigration attorney. Happy to take a referral, even just for a one-time consult.&rdquo;</blockquote>
+      <div class="why">The best standing answer &mdash; it turns goodwill into something useful.</div>
+      <button class="copy" data-target="tp7">Copy</button>
+    </div>
+
+    <div class="tp">
+      <div class="q">Horror stories or unsolicited advice</div>
+      <blockquote id="tp8">&ldquo;Thanks, that's good to know. Every case is different, so I'm getting it looked at by someone who can see my specifics.&rdquo;</blockquote>
+      <button class="copy" data-target="tp8">Copy</button>
+    </div>
+
+    <h2 class="section">What to avoid</h2>
+    <ul class="avoid">
+      <li><strong>Who you're asking for letters.</strong> Friends may know the same people, and you don't want a reference hearing about the ask secondhand.</li>
+      <li><strong>Any work under double-blind review.</strong> Publicizing it during review can reveal your identity to reviewers. Keep it out of casual talk and social media until decisions are in.</li>
+      <li><strong>Money and fees.</strong></li>
+      <li><strong>Odds, or what &ldquo;they&rdquo; told you.</strong> Anything a liaison or friend said about your chances isn't something to repeat as fact.</li>
+    </ul>
+
+    <footer>Personal reference. Say it in your own words &mdash; these are starting points, not a script.</footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll(".copy").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var el = document.getElementById(btn.getAttribute("data-target"));
+      if(!el) return;
+      var text = el.textContent.replace(/^[“"]|[”"]$/g, "").trim();
+      var original = btn.textContent;
+      function done(label){ btn.textContent = label; setTimeout(function(){ btn.textContent = original; }, 1400); }
+      try{
+        navigator.clipboard.writeText(text).then(function(){ done("Copied"); }, function(){ done("Select text"); });
+      }catch(e){ done("Select text"); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
