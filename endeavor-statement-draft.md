@@ -57,7 +57,7 @@ The forward-looking plan below is the fifth and final piece of this prong — Dh
 **Months 0–6 (through early 2027) — formalize what is currently informal.** Two of my strongest relationships in this space exist as conversations, not commitments, and closing that gap is the immediate priority:
 
 - Convert the verbal collaboration discussion with Jiri Jirik and John Sands at NCyTE Center into a defined engagement — at minimum a documented plan to contribute an OT-security module (built on ScriptedOT) to NCyTE's national faculty-development curriculum, ideally a named role in a future NCyTE workshop rather than a guest demonstration.
-- Submit the agentic-AI threat-modeling work (currently an OWASP-aligned CISSE presentation) as a position paper to IEEE SaTML 2027, moving it from a regional teaching-conference talk to a peer-reviewed security venue — submission due September 29, 2026.
+- Submit applied agentic-AI security research to a peer-reviewed venue, moving beyond regional teaching-conference talks — submitted in late September 2026, decisions expected in December.
 - Carry the BSAI program proposal through the remainder of CityU's approval process following its progress through the Academic Affairs Committee, with a target of formal sign-off inside this window.
 - Present ScriptedOT and the AI Hub multi-agent architecture at least once outside CityU's own events — OWASP Seattle chapter and RSA Conference 2027 (CFP opens September 15, 2026) are the two venues already in motion.
 
@@ -72,7 +72,7 @@ The forward-looking plan below is the fifth and final piece of this prong — Dh
 
 - Publish a written account of the BSAI program's first-year outcomes, framed explicitly as a reusable model other community and technical colleges can adapt — mirroring how NCyTE itself packages and redistributes curriculum.
 - Expand the NCyTE partnership from a single module or workshop into a recurring role, if the first joint engagement went well.
-- Continue the publication and conference track record started in year one (SaTML, RSA, OWASP, and any resulting invitations), so the field-recognition evidence keeps compounding rather than stopping the moment the petition is filed.
+- Continue the publication and conference track record started in year one (peer-reviewed security venues, RSA, OWASP, and any resulting invitations), so the field-recognition evidence keeps compounding rather than stopping the moment the petition is filed.
 
 ## Why a Waiver Serves the National Interest
 
